@@ -1,5 +1,6 @@
 #!/home/kitral/anaconda2/bin/python2.7
 import re
+import subprocess
 
 try:
     import Tkinter as tk
@@ -7,6 +8,9 @@ except ImportError:
     # Python3
     import tkinter as tk
 
+def sendmessage(message):
+    subprocess.Popen(['notify-send', message])
+    return
 
 def get_clip_text():
     root = tk.Tk()
@@ -31,3 +35,4 @@ text = get_clip_text()
 new_text = filter_text(text)
 if new_text:
     save_text_in_file(new_text, file_path)
+    sendmessage("add ok")
