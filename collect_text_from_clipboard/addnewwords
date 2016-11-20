@@ -18,9 +18,10 @@ def get_clip_text():
     return root.clipboard_get()
 
 def filter_text(text):
-    if len(text) > 30:
+    if len(text) > 1000:
         return None
     else:
+        text = re.sub('[\r\n]+', ' ', text)
         return text.strip()
 
 def save_text_in_file(text, file_path):
